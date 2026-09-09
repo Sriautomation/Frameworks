@@ -15,7 +15,7 @@ jobs:
           python-version: '3.x'
       - uses: browser-actions/setup-chrome@v2
       - run: pip install -r requirements.txt
-      - run: python test_login.py
+      - run: pytest test_login.py --html=report.html --self-contained-html
 
       - name: Send email report
         if: always()
@@ -29,4 +29,4 @@ jobs:
           to: srimathirb@gmail.com
           from: GitHub Actions <srimathirb@gmail.com>
           body: Test run finished. Check the Actions tab for full logs.
-          attachments: screenshots/valid_login_result.png,screenshots/invalid_login_result.png
+          attachments: report.html,screenshots/valid_login_result.png,screenshots/invalid_login_result.png
