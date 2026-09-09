@@ -1,11 +1,16 @@
 from selenium import webdriver
 from pages.login_page import LoginPage
 from test_data import VALID_PASSWORD, VALID_USERNAME, INVALID_PASSWORD, INVALID_USERNAME
-
+from selenium.webdriver.chrome.options import Options
 
 
 def test_valid_login():
-    driver = webdriver.Chrome()
+    options = Options()
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    driver = webdriver.Chrome(options=options)    
+
     try:
         login_page = LoginPage(driver)
         login_page.open()
@@ -21,7 +26,11 @@ def test_valid_login():
 
 
 def test_invalid_login():
-    driver = webdriver.Chrome()
+    options = Options()
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    driver = webdriver.Chrome(options=options)
     try:
         login_page = LoginPage(driver)
         login_page.open()
