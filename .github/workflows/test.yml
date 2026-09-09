@@ -1,6 +1,9 @@
 name: Run Login Tests
 
-on: [push]
+on:
+  push:
+  schedule:
+    - cron: '0 6 * * *'
 
 jobs:
   test:
