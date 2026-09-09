@@ -13,3 +13,17 @@ jobs:
       - uses: browser-actions/setup-chrome@v1
       - run: pip install -r requirements.txt
       - run: python test_login.py
+
+      - name: Send email report
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: Login Test Report
+          to: srimathirb@gmail.com
+          from: GitHub Actions
+          body: Test run finished. Check the Actions tab for full logs.
+          attachments: screenshots/valid_login_result.png,screenshots/invalid_login_result.png
