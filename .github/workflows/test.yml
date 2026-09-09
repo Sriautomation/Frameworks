@@ -26,7 +26,7 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: Login Test Report
-          to: srimathirb@gmail.com
+          to: srimathirb@gmail.com,ujwal99arak@gmail.com
           from: GitHub Actions <srimathirb@gmail.com>
           body: Test run finished. Check the Actions tab for full logs.
           attachments: report.html,screenshots/valid_login_result.png,screenshots/invalid_login_result.png
