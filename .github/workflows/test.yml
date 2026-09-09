@@ -8,13 +8,15 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
       - uses: browser-actions/setup-chrome@v2
       - run: pip install -r requirements.txt
       - run: python test_login.py
 
       - name: Send email report
         if: always()
-        uses: dawidd6/action-send-mail@v3
+        uses: dawidd6/action-send-mail@v17
         with:
           server_address: smtp.gmail.com
           server_port: 465
